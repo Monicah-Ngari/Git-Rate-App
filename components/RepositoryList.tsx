@@ -1,4 +1,5 @@
-import { FlatList, View, StyleSheet } from "react-native";
+import React from "react";
+import { FlatList, View, Text, StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   separator: {
@@ -53,15 +54,58 @@ const repositories = [
   },
 ];
 
+const Item = ({
+  id,
+  fullName,
+  description,
+  language,
+  forksCount,
+  stargazersCount,
+  ratingAverage,
+  reviewCount,
+  ownerAvatarUrl,
+}) => {
+  return (
+    <View>
+      <Text>{id}</Text>
+      <Text>{fullName}</Text>
+      <Text>{description}</Text>
+      <Text>{language}</Text>
+      <Text>{forksCount}</Text>
+      <Text>{stargazersCount}</Text>
+      <Text>{ratingAverage}</Text>
+      <Text>{reviewCount}</Text>
+      <Text>{ownerAvatarUrl}</Text>
+    </View>
+  );
+};
+
+const renderItem = ({ item }) => (
+  <Item
+    id={item.id}
+    fullName={item.fullName}
+    description={item.description}
+    language={item.language}
+    forksCount={item.forksCount}
+    stargazersCount={item.stargazersCount}
+    ratingAverage={item.ratingAverage}
+    reviewCount={item.reviewCount}
+    ownerAvatarUrl={item.ownerAvatarUrl}
+  />
+);
+
 const ItemSeparator = () => <View style={styles.separator} />;
 
 const RepositoryList = () => {
   return (
-    <FlatList
-      data={repositories}
-      ItemSeparatorComponent={ItemSeparator}
-      // other props
-    />
+    <View>
+      <FlatList
+        data={repositories}
+        ItemSeparatorComponent={ItemSeparator}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+      />
+    </View>
   );
 };
 
