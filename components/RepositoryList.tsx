@@ -55,7 +55,6 @@ const repositories = [
 ];
 
 const Item = ({
-  id,
   fullName,
   description,
   language,
@@ -63,26 +62,22 @@ const Item = ({
   stargazersCount,
   ratingAverage,
   reviewCount,
-  ownerAvatarUrl,
 }) => {
   return (
     <View>
-      <Text>{id}</Text>
-      <Text>{fullName}</Text>
-      <Text>{description}</Text>
-      <Text>{language}</Text>
-      <Text>{forksCount}</Text>
-      <Text>{stargazersCount}</Text>
-      <Text>{ratingAverage}</Text>
-      <Text>{reviewCount}</Text>
-      <Text>{ownerAvatarUrl}</Text>
+      <Text>Full Name :{fullName}</Text>
+      <Text> Description:{description}</Text>
+      <Text>Language:{language}</Text>
+      <Text>Forks:{forksCount}</Text>
+      <Text>Stars: {stargazersCount}</Text>
+      <Text> Rating:{ratingAverage}</Text>
+      <Text> Reviews:{reviewCount}</Text>
     </View>
   );
 };
 
 const renderItem = ({ item }) => (
   <Item
-    id={item.id}
     fullName={item.fullName}
     description={item.description}
     language={item.language}
@@ -90,7 +85,6 @@ const renderItem = ({ item }) => (
     stargazersCount={item.stargazersCount}
     ratingAverage={item.ratingAverage}
     reviewCount={item.reviewCount}
-    ownerAvatarUrl={item.ownerAvatarUrl}
   />
 );
 
