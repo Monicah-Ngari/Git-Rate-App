@@ -1,13 +1,27 @@
 import React from "react";
 import { FlatList, View, Text, StyleSheet } from "react-native";
 
+interface Repository {
+  id: string;
+  fullName: string;
+  description: string;
+  language: string;
+  forksCount: number;
+  stargazersCount: number;
+  ratingAverage: number;
+  reviewCount: number;
+  ownerAvatarUrl: string;
+}
+
+interface ItemProps extends Repository {}
+
 const styles = StyleSheet.create({
   separator: {
     height: 10,
   },
 });
 
-const repositories = [
+const repositories: Repository[] = [
   {
     id: "jaredpalmer.formik",
     fullName: "jaredpalmer/formik",
@@ -54,7 +68,7 @@ const repositories = [
   },
 ];
 
-const Item = ({
+const Item: React.FC<ItemProps> = ({
   fullName,
   description,
   language,
@@ -65,18 +79,18 @@ const Item = ({
 }) => {
   return (
     <View>
-      <Text>Full Name :{fullName}</Text>
-      <Text> Description:{description}</Text>
-      <Text>Language:{language}</Text>
-      <Text>Forks:{forksCount}</Text>
+      <Text>Full Name: {fullName}</Text>
+      <Text>Description: {description}</Text>
+      <Text>Language: {language}</Text>
+      <Text>Forks: {forksCount}</Text>
       <Text>Stars: {stargazersCount}</Text>
-      <Text> Rating:{ratingAverage}</Text>
-      <Text> Reviews:{reviewCount}</Text>
+      <Text>Rating: {ratingAverage}</Text>
+      <Text>Reviews: {reviewCount}</Text>
     </View>
   );
 };
 
-const renderItem = ({ item }) => (
+const renderItem = ({ item }: { item: Repository }) => (
   <Item
     fullName={item.fullName}
     description={item.description}
@@ -85,12 +99,14 @@ const renderItem = ({ item }) => (
     stargazersCount={item.stargazersCount}
     ratingAverage={item.ratingAverage}
     reviewCount={item.reviewCount}
+    id={""}
+    ownerAvatarUrl={""}
   />
 );
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
-const RepositoryList = () => {
+const RepositoryList: React.FC = () => {
   return (
     <View>
       <FlatList
