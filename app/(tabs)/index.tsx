@@ -1,47 +1,46 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, ScrollView, View } from "react-native";
 import RepositoryList from "@/components/RepositoryList";
-import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerImage={<View />}
-      headerBackgroundColor={{
-        light: "transparent",
-        dark: "transparent",
-      }}
-    >
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title" style={styles.lightText}>
-          Welcome!
-        </ThemedText>
-      </ThemedView>
-
+    <ScrollView contentContainerStyle={styles.container}>
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle" style={styles.lightText}>
+        <ThemedText type="subtitle" style={styles.subtitleText}>
           Repositories:
         </ThemedText>
         <RepositoryList />
       </ThemedView>
-    </ParallaxScrollView>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flexGrow: 1,
+    backgroundColor: "#FFFFFF",
+    padding: 16,
+  },
   titleContainer: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 8,
-    backgroundColor: "#FFFFFF",
+    justifyContent: "center",
+    marginBottom: 16,
+  },
+  titleText: {
+    fontSize: 32,
+    fontWeight: "bold",
+    color: "#000",
   },
   stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+    flex: 1,
     backgroundColor: "#FFFFFF",
   },
-  lightText: {
-    color: "#FFFFFF",
+  subtitleText: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 16,
+    color: "#000",
   },
 });
