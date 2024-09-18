@@ -1,5 +1,6 @@
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import Constants from "expo-constants";
+import { ScrollView } from "react-native-gesture-handler";
 
 const styles = StyleSheet.create({
   container: {
@@ -17,9 +18,11 @@ const styles = StyleSheet.create({
 const AppBar = () => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity>
-        <Text style={styles.text}> Repositories</Text>
-      </TouchableOpacity>
+      <ScrollView>
+        <TouchableOpacity>
+          <Text style={styles.text}> Repositories</Text>
+        </TouchableOpacity>
+      </ScrollView>
     </View>
   );
 };
