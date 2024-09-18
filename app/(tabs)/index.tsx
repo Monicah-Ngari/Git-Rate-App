@@ -1,18 +1,22 @@
-import { StyleSheet, ScrollView, View } from "react-native";
+import { StyleSheet, ScrollView, View, TouchableOpacity } from "react-native";
 import RepositoryList from "@/components/RepositoryList";
 import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
+import AppBar from "@/components/AppBar";
 
 export default function HomeScreen() {
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle" style={styles.subtitleText}>
-          Repositories:
-        </ThemedText>
-        <RepositoryList />
-      </ThemedView>
-    </ScrollView>
+    <>
+      <AppBar />
+      <ScrollView contentContainerStyle={styles.container}>
+        <ThemedView style={styles.stepContainer}>
+          <ThemedText type="subtitle" style={styles.subtitleText}>
+            <TouchableOpacity></TouchableOpacity>
+          </ThemedText>
+          <RepositoryList />
+        </ThemedView>
+      </ScrollView>
+    </>
   );
 }
 
