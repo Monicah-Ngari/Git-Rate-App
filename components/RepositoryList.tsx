@@ -45,7 +45,7 @@ const repositories: Repository[] = [
     stargazersCount: 21553,
     ratingAverage: 88,
     reviewCount: 4,
-    ownerAvatarUrl: Avatar,
+    ownerAvatarUrl: Avater,
   },
   {
     id: "rails.rails",
@@ -56,7 +56,7 @@ const repositories: Repository[] = [
     stargazersCount: 45377,
     ratingAverage: 100,
     reviewCount: 2,
-    ownerAvatarUrl: Avatar,
+    ownerAvatarUrl: Avater,
   },
   {
     id: "django.django",
@@ -67,7 +67,7 @@ const repositories: Repository[] = [
     stargazersCount: 48496,
     ratingAverage: 73,
     reviewCount: 5,
-    ownerAvatarUrl: Avatar,
+    ownerAvatarUrl: Avater,
   },
   {
     id: "reduxjs.redux",
@@ -78,9 +78,15 @@ const repositories: Repository[] = [
     stargazersCount: 52869,
     ratingAverage: 0,
     reviewCount: 0,
-    ownerAvatarUrl: Avatar,
+    ownerAvatarUrl: Avater,
   },
 ];
+const formatNumber = (number: number) => {
+  if (number >= 1000) {
+    return (number / 1000).toFixed(1) + "k";
+  }
+  return number.toString();
+};
 
 const Item: React.FC<ItemProps> = ({
   fullName,
@@ -98,10 +104,10 @@ const Item: React.FC<ItemProps> = ({
       <Text>Full Name: {fullName}</Text>
       <Text>Description: {description}</Text>
       <Text>Language: {language}</Text>
-      <Text>Forks: {forksCount}</Text>
-      <Text>Stars: {stargazersCount}</Text>
+      <Text>Forks: {formatNumber(forksCount)}</Text>
+      <Text>Stars: {formatNumber(stargazersCount)}</Text>
       <Text>Rating: {ratingAverage}</Text>
-      <Text>Reviews: {reviewCount}</Text>
+      <Text>Reviews: {formatNumber(reviewCount)}</Text>
     </View>
   );
 };
