@@ -1,5 +1,13 @@
 import React from "react";
-import { FlatList, View, Text, StyleSheet } from "react-native";
+import {
+  FlatList,
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  ImageSourcePropType,
+} from "react-native";
+import Avater from "../../assets/images/Avater.jpeg";
 
 interface Repository {
   id: string;
@@ -10,7 +18,7 @@ interface Repository {
   stargazersCount: number;
   ratingAverage: number;
   reviewCount: number;
-  ownerAvatarUrl: string;
+  ownerAvatarUrl: ImageSourcePropType;
 }
 
 interface ItemProps extends Repository {}
@@ -18,6 +26,12 @@ interface ItemProps extends Repository {}
 const styles = StyleSheet.create({
   separator: {
     height: 10,
+  },
+  avatar: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    marginBottom: 10,
   },
 });
 
@@ -31,7 +45,7 @@ const repositories: Repository[] = [
     stargazersCount: 21553,
     ratingAverage: 88,
     reviewCount: 4,
-    ownerAvatarUrl: "https://avatars2.githubusercontent.com/u/4060187?v=4",
+    ownerAvatarUrl: Avatar,
   },
   {
     id: "rails.rails",
@@ -42,7 +56,7 @@ const repositories: Repository[] = [
     stargazersCount: 45377,
     ratingAverage: 100,
     reviewCount: 2,
-    ownerAvatarUrl: "https://avatars1.githubusercontent.com/u/4223?v=4",
+    ownerAvatarUrl: Avatar,
   },
   {
     id: "django.django",
@@ -53,7 +67,7 @@ const repositories: Repository[] = [
     stargazersCount: 48496,
     ratingAverage: 73,
     reviewCount: 5,
-    ownerAvatarUrl: "https://avatars2.githubusercontent.com/u/27804?v=4",
+    ownerAvatarUrl: Avatar,
   },
   {
     id: "reduxjs.redux",
@@ -64,7 +78,7 @@ const repositories: Repository[] = [
     stargazersCount: 52869,
     ratingAverage: 0,
     reviewCount: 0,
-    ownerAvatarUrl: "https://avatars3.githubusercontent.com/u/13142323?v=4",
+    ownerAvatarUrl: Avatar,
   },
 ];
 
@@ -76,9 +90,11 @@ const Item: React.FC<ItemProps> = ({
   stargazersCount,
   ratingAverage,
   reviewCount,
+  ownerAvatarUrl,
 }) => {
   return (
     <View>
+      <Image source={ownerAvatarUrl} style={styles.avatar} />
       <Text>Full Name: {fullName}</Text>
       <Text>Description: {description}</Text>
       <Text>Language: {language}</Text>
@@ -99,8 +115,8 @@ const renderItem = ({ item }: { item: Repository }) => (
     stargazersCount={item.stargazersCount}
     ratingAverage={item.ratingAverage}
     reviewCount={item.reviewCount}
-    id={""}
-    ownerAvatarUrl={""}
+    id={item.id}
+    ownerAvatarUrl={item.ownerAvatarUrl}
   />
 );
 

@@ -5,7 +5,7 @@ import { ScrollView } from "react-native-gesture-handler";
 const styles = StyleSheet.create({
   container: {
     paddingTop: Constants.statusBarHeight,
-    backgroundColor: "#25292c",
+    backgroundColor: "#24292e",
 
     paddingBottom: 5,
   },
