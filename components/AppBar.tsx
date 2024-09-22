@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 const AppBar = () => {
   return (
     <View style={styles.container}>
-      <ScrollView>
+      <ScrollView horizontal>
         <TouchableOpacity>
           <Text style={styles.text}> Repositories</Text>
         </TouchableOpacity>
