@@ -3,20 +3,29 @@ import RepositoryList from "@/components/RepositoryList";
 import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
 import AppBar from "@/components/AppBar";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { NativeRouter, Routes, Route, Navigate } from "react-router-native";
+import SignIn from "@/components/SignIn";
 
 export default function HomeScreen() {
   return (
-    <>
-      <AppBar />
-      <ScrollView contentContainerStyle={styles.container}>
-        <ThemedView style={styles.stepContainer}>
-          <ThemedText type="subtitle" style={styles.subtitleText}>
-            <TouchableOpacity></TouchableOpacity>
-          </ThemedText>
-          <RepositoryList />
-        </ThemedView>
-      </ScrollView>
-    </>
+    <NativeRouter>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <AppBar />
+        <ScrollView contentContainerStyle={styles.container}>
+          <ThemedView style={styles.stepContainer}>
+            <ThemedText type="subtitle" style={styles.subtitleText}>
+              <TouchableOpacity></TouchableOpacity>
+            </ThemedText>
+            <Routes>
+              <Route path="/" element={<SignIn />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+            <RepositoryList />
+          </ThemedView>
+        </ScrollView>
+      </GestureHandlerRootView>
+    </NativeRouter>
   );
 }
 
