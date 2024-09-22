@@ -7,7 +7,7 @@ import {
   StyleSheet,
   ImageSourcePropType,
 } from "react-native";
-import Avater from "../../assets/images/Avater.jpeg";
+import Avater from "@/assets/images/Avater.png";
 
 interface Repository {
   id: string;
