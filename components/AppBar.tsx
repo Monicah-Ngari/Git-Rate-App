@@ -21,6 +21,7 @@ const AppBar = () => {
       <ScrollView horizontal>
         <TouchableOpacity>
           <Text style={styles.text}> Repositories</Text>
+          <Text style={styles.text}> Sign In </Text>
         </TouchableOpacity>
       </ScrollView>
     </View>
