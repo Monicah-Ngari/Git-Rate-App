@@ -1,4 +1,10 @@
-import { StyleSheet, ScrollView, View, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  ScrollView,
+  View,
+  TouchableOpacity,
+  Platform,
+} from "react-native";
 import RepositoryList from "@/components/RepositoryList";
 import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
@@ -34,6 +40,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     backgroundColor: "#FFFFFF",
     padding: 16,
+    fontFamily: Platform.OS === "android" ? "sans-serif" : "Arial",
   },
   titleContainer: {
     flexDirection: "row",
