@@ -36,6 +36,7 @@ const SignIn = () => {
       username: "",
       password: "",
     },
+    validationSchema,
     onSubmit: (values) => {
       console.log(values);
     },
